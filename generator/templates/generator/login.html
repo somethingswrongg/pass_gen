@@ -1,0 +1,20 @@
+{% extends 'generator/base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+    <div class="container text-center">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-outline-secondary">Войти</button>
+            <a href="{% url 'generator:register' %}" class="btn btn btn-outline-secondary">Регистрация</a>
+            <br>
+            <a href="{% url 'generator:home' %}" class="btn btn btn-outline-secondary">На главную</a>
+        </form>
+    </div>
+
+
+{% endblock %}

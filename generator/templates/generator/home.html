@@ -1,0 +1,52 @@
+{% extends 'generator/base.html' %}
+
+{% block title %}
+    Домашняя страница
+{% endblock title %}
+
+
+{% block body %}
+    <div class="container text-center">
+        <h1>Создание пароля</h1>
+
+        {% if user.is_authenticated %}
+            Привет, {{ user.username }}
+            <a href="{% url 'generator:logout' %}" class="btn btn btn-outline-secondary">Выход</a>
+            <a href="{% url 'generator:passlist' %}" class="btn btn btn-outline-secondary">Ваши пароли</a>
+
+        {% else %}
+            <a href="{% url 'generator:login' %}" class="btn btn btn-outline-secondary">Вход</a>
+            <a href="{% url 'generator:register' %}" class="btn btn btn-outline-secondary">Регистрация</a>
+        {% endif %}
+
+    </div>
+    <br>
+    <div class="container text-center">
+        <p>Создай себе надежный пароль</p>
+        <form action="{% url 'generator:password' %}">
+            <select name="lenght">
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12" selected="selected">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+            </select> Длина
+            <br>
+            <input type="checkbox" name="uppercase"> Верхний регистр
+            <br>
+            <input type="checkbox" name="numbers"> Числа
+            <br>
+            <input type="checkbox" name="special"> Специальные символы
+            <br>
+
+            <p><input type="submit" value="Получить пароль" class="btn btn btn-outline-secondary"></p>
+            </p>
+        </form>
+        <a href="{% url 'generator:about' %}" class="btn btn btn-outline-secondary">О проекте</a>
+    </div>
+{% endblock body %}
+

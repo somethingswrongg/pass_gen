@@ -1,0 +1,27 @@
+{% extends './base.html' %}
+
+{% block title %}
+О проекте
+{% endblock title %}
+<head>
+   <style>     
+    .pass-list {
+      width:60%;
+      table-layout:fixed;
+      margin: auto;
+    }
+
+    .h3 {
+      text-align: center;
+    }
+  </style>
+</head>
+{% block body %}
+  <div class="container text-center">
+    <h1>О проекте</h1>
+    <p>Тестовый проект на проверку базовых знаний фреймворка Django <br>
+    Используется в личных целях</p>
+    <br />
+    <a href="{% url 'generator:home' %}" class="btn btn-outline-secondary">На главную</a>
+  </div>
+{% endblock body %}
