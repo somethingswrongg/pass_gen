@@ -1,9 +1,7 @@
 import random
 from datetime import datetime
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
@@ -90,7 +88,6 @@ def about(request):
     return render(request, 'generator/about.html')
 
 
-@login_required
 def pass_list(request):
     context = {
         "passwords_list": Passwords.objects.filter(user=request.user),
