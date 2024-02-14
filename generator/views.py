@@ -1,13 +1,13 @@
 import random
 from datetime import datetime
-
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, TemplateView
-
 from generator.models import Passwords
 
 
@@ -28,6 +28,7 @@ class RegisterView(CreateView):
         )
         login(request=self.request, user=user)
         return response
+
 
 def login_view(request: HttpRequest) -> HttpResponse:
     if request.method == "GET":
@@ -73,7 +74,8 @@ def password(request):
     for x in range(lenght):
         thepassword += random.choice(characters)
 
-    password_to_models = Passwords(password=thepassword, created_at=datetime)
+    user_instance = request.user
+    password_to_models = Passwords(user=user_instance, password=thepassword, created_at=datetime)
 
     password_to_models.save()
 
@@ -88,9 +90,10 @@ def about(request):
     return render(request, 'generator/about.html')
 
 
+@login_required
 def pass_list(request):
     context = {
-        "passwords_list": Passwords.objects.all(),
+        "passwords_list": Passwords.objects.filter(user=request.user),
     }
 
     return render(request, 'generator/created_pass.html', context=context)
