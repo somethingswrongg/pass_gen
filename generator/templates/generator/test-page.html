@@ -1,0 +1,28 @@
+{% extends "generator/base.html" %}
+
+{% block title %}
+    ТЕСТОВАЯ СТРАНИЦА РЕГИСТРАЦИИ!!!
+{% endblock %}
+
+{% block body %}
+    <form method="post" class="reg-form">
+        {% csrf_token %}
+        <h1 align="center">ТЕСТОВАЯ РЕГИСТРАЦИЯ</h1>
+        <div class="mb-3">
+            <input type="text" name="{{ form.username.name }}" placeholder="Имя" class="form-control reg-form__input">
+        </div>
+        <div class="mb-3">
+            <input type="email" name="{{ form.email.name }}" placeholder="E-mail" class="form-control">
+        </div>
+        <div class="mb-3">
+            <input type="password" name="{{ form.password1.name }}" placeholder="Пароль" class="form-control">
+        </div>
+        <div class="mb-3">
+            <input type="password" name="{{ form.password2.name }}" placeholder="Подтвердите пароль" class="form-control">
+        </div>
+        <div class="mb-3" align="center">
+            <input type="submit" class="btn btn-outline-secondary" value="Регистрация">
+            <a href="{% url 'generator:home' %}" class="btn btn-outline-secondary">На главную</a>
+        </div>
+    </form>
+{% endblock %}

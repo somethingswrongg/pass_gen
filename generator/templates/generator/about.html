@@ -2,26 +2,17 @@
 
 {% block title %}
 О проекте
-{% endblock title %}
-<head>
-   <style>     
-    .pass-list {
-      width:60%;
-      table-layout:fixed;
-      margin: auto;
-    }
+{% endblock %}
 
-    .h3 {
-      text-align: center;
-    }
-  </style>
-</head>
 {% block body %}
-  <div class="container text-center">
-    <h1>О проекте</h1>
-    <p>Тестовый проект на проверку базовых знаний фреймворка Django <br>
-    Используется в личных целях</p>
-    <br />
-    <a href="{% url 'generator:home' %}" class="btn btn-outline-secondary">На главную</a>
-  </div>
+    <div class="about-article">
+        <h1>О ПРОЕКТЕ</h1>
+    </div>
+    <div class="container text-center">
+
+        <p>Тестовый проект на проверку базовых знаний фреймворка Django <br>
+            Используется в личных целях</p>
+        <br/>
+        <a href="{% url 'generator:home' %}" class="btn btn-outline-secondary">На главную</a>
+    </div>
 {% endblock body %}

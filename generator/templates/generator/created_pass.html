@@ -5,21 +5,12 @@
 {% endblock title %}
 
 {% block body %}
-    <head>
-    <style>
-        .pass-list {
-            width: 60%;
-            table-layout: fixed;
-            margin: auto;
-        }
 
-        .h3 {
-            text-align: center;
-        }
-    </style>
-
-    <h3 class="h3">Ранее созданные пароли:</h3>
+    <div class="pass-title">
+        <h1>ВАШИ ПАРОЛИ:</h1>
+    </div>
     <div class='container text-center pass-list'>
+
         {% if user.is_authenticated %}
             {% if passwords_list %}
                 <table class="table table-striped pass-list">

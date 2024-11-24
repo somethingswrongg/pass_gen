@@ -3,14 +3,22 @@
 {% block title %}
     Register
 {% endblock %}
-
+<style>
+</style>
 {% block body %}
-    <div class='container'>
-        <form method="post">
+    <div class="pass-title">
+        <h1>РЕГИСТРАЦИЯ</h1>
+    </div>
+
+    <div class="mb-3">
+        <form method="post" class="reg-form form-control-sm">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Регистрация" class="btn btn-outline-secondary">
-            <a href="{% url 'generator:home'%}" class="btn btn-outline-secondary">На главную</a>
+            <div class="register">
+                <input type="submit" value="Регистрация" class="btn btn-outline-secondary">
+                <a href="{% url 'generator:home' %}" class="btn btn-outline-secondary">На главную</a>
+            </div>
         </form>
     </div>
+
 {% endblock %}

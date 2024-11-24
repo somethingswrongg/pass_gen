@@ -7,7 +7,9 @@ from generator.views import AboutMeView, RegisterView
 app_name = 'generator'
 
 urlpatterns = [
+    path('', views.home, name='home'),
     path('home/', views.home, name='home'),
+    path('test/', views.register, name='test'),
     path("password/", views.password, name='password'),
     path('about/', views.about, name='about'),
     path('passlist/', views.pass_list, name='passlist'),
